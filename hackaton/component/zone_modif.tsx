@@ -116,7 +116,7 @@ export default function InteractiveZooMap() {
 
         <div className="bg-cover bg-center bg-no-repeat">
           <Image
-            src="/mapzoo.png"
+            src="/Mapzoo Image Resize.png"
             alt="Plan du zoo"
             fill
             priority
