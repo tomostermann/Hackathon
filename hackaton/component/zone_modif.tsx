@@ -5,10 +5,8 @@ import { useMemo, useState } from "react";
 
 type Zone = {
   id: string;
-  name: string;
   // points en coordonnées image (pixels) : "x,y x,y x,y"
   points: string;
-  animals?: string[];
 };
 
 const IMAGE_W = 2048;
@@ -21,15 +19,15 @@ const IMAGE_H = 1330;
 const ZONES: Zone[] = [
   {
     id: "zone_lac_droite",
-    name: "Zone des lacs (droite)",
     points: "1505,560 1775,560 1830,710 1705,790 1495,740",
-    animals: ["Exemple: flamants", "Exemple: oiseaux d’eau"],
   },
   {
     id: "zone_centre",
-    name: "Zone centrale",
     points: "900,560 1110,510 1230,650 1120,820 920,770",
-    animals: ["Exemple: primates", "Exemple: petits mammifères"],
+  },
+  {
+    id: "Takin",
+    points: "1862,794 1891,873 1934,873 1900,794 1862,794",
   },
 ];
 
@@ -86,8 +84,8 @@ export default function InteractiveZooMap() {
   const draftPointsStr = draftPoints.map((p) => `${p.x},${p.y}`).join(" ");
 
   return (
-    <div className="grid h-full w-full grid-cols-[1fr_360px]">
-      <div className="relative w-full h-full">
+    <div className="relative h-full w-full">
+      <div className="relative w-full h-full overflow-hidden">
         <div className="flex gap-2 mb-2">
           <button
             className="px-3 py-2 rounded-xl border shadow-sm"
@@ -122,7 +120,7 @@ export default function InteractiveZooMap() {
             alt="Plan du zoo"
             fill
             priority
-            className="object-contain bg-black"
+            className="object-contain bg-black select-none"
           />
 
           {/* Overlay SVG : même ratio via viewBox */}
@@ -196,7 +194,7 @@ export default function InteractiveZooMap() {
         ) : (
           <div>
             <div className="flex items-start justify-between gap-2">
-              <h2 className="font-semibold text-lg">{activeZone.name}</h2>
+              <h2 className="font-semibold text-lg">{activeZone.id}</h2>
               <button
                 className="px-2 py-1 rounded-lg border"
                 onClick={() => setActiveId(null)}
