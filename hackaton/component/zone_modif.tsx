@@ -86,7 +86,7 @@ export default function InteractiveZooMap() {
   return (
     <div className="relative h-full w-full">
       <div className="relative w-full h-full overflow-hidden">
-        <div className="flex gap-2 mb-2">
+        <div className="absolute top-4 left-4 z-50 flex gap-2 bg-black">
           <button
             className="px-3 py-2 rounded-xl border shadow-sm"
             onClick={() => setEditMode((v) => !v)}
@@ -116,7 +116,7 @@ export default function InteractiveZooMap() {
 
         <div className="relative w-full h-full overflow-hidden">
           <Image
-            src="/mapzoo.png"
+            src="/Mapzoo Image Resize.png"
             alt="Plan du zoo"
             fill
             priority
