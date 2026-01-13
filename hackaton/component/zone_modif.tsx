@@ -114,22 +114,20 @@ export default function InteractiveZooMap() {
 
         {/* Container responsive : on garde le ratio avec aspect-[w/h] */}
 
-        <div className="bg-cover bg-center bg-no-repeat">
+        <div className="relative w-full h-full overflow-hidden">
           <Image
             src="/Mapzoo Image Resize.png"
             alt="Plan du zoo"
             fill
             priority
-            className="object-contain select-none"
+            className="object-contain bg-black select-none"
           />
 
-          {/* Overlay SVG : même ratio via viewBox */}
           <svg
             className="absolute inset-0 w-full h-full"
             viewBox={`0 0 ${IMAGE_W} ${IMAGE_H}`}
             onClick={onSvgClick}
           >
-            {/* Zones existantes */}
             {ZONES.map((z) => {
               const isActive = z.id === activeId;
               return (
