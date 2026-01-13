@@ -17,10 +17,6 @@ const IMAGE_H = 1330;
  * Tu vas les créer facilement avec le "mode édition" (bouton en haut).
  */
 const ZONES: Zone[] = [
-  {
-    id: "Takin",
-    points: "1862,794 1891,873 1934,873 1900,794 1862,794",
-  },
 ];
 
 export default function InteractiveZooMap() {
