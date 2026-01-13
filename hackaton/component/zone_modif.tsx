@@ -564,7 +564,7 @@ export default function InteractiveZooMap() {
     () => ZONES.find((z) => z.id === activeId) ?? null,
     [activeId]
   );
-  function onSvgClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {}
+  function onSvgClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) { }
 
   return (
     <div className="relative h-full w-full">
