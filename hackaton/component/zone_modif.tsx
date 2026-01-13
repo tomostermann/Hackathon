@@ -283,31 +283,22 @@ export default function InteractiveZooMap() {
       <aside className="h-full border-l bg-neutral-950 p-4 text-white">
         {!activeZone ? (
           <div>
-            <h2 className="font-semibold text-lg">Infos</h2>
-            <p className="opacity-80 mt-2">Clique une zone sur la carte.</p>
           </div>
         ) : (
           <div
             id="popup"
-            className="bg-yellow-50 p-20 fixed text-yellow-400 rounded-[200] top-125 left-125 bottom-50 right-50 opacity-65"
+            className="bg-[#f4f0de]/90 fixed text-[#9b8457] rounded-[200] top-130 left-125 bottom-50 right-50"
           >
             <div className="flex items-start justify-between gap-2">
-              <h2 className="font-semibold text-lg">{activeZone.id}</h2>
+              <h1 className="font-black text-2xl text-shadow-lg/10 mt-7 ml-130 mr-30 text-center">{activeZone.id}</h1>
               <button
-                className="px-2 py-1 rounded-lg border"
+                className="px-2 py-1 rounded-lg border text-black mr-30 mt-10"
                 onClick={() => setActiveId(null)}
               >
                 ✕
               </button>
-            </div>
 
-            <div className="mt-3">
-              <h3 className="font-medium">Animaux</h3>
-              <ul className="list-disc ml-5 mt-2 opacity-90">
-                {(activeZone.animals ?? ["(à remplir)"]).map((a) => (
-                  <li key={a}>{a}</li>
-                ))}
-              </ul>
+
             </div>
           </div>
         )}
