@@ -106,13 +106,13 @@ export default function InteractiveZooMap() {
 
         {/* Container responsive : on garde le ratio avec aspect-[w/h] */}
 
-        <div className="relative w-full h-full overflow-hidden">
+        <div className="bg-cover bg-center bg-no-repeat">
           <Image
             src="/Mapzoo Image Resize.png"
             alt="Plan du zoo"
             fill
             priority
-            className="object-contain bg-black select-none"
+            className="object-contain select-none"
           />
 
           {/* Overlay SVG : même ratio via viewBox */}
