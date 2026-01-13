@@ -5,17 +5,12 @@ import { useMemo, useState } from "react";
 
 type Zone = {
   id: string;
-  // points en coordonnées image (pixels) : "x,y x,y x,y"
   points: string;
 };
 
 const IMAGE_W = 2048;
 const IMAGE_H = 1330;
 
-/**
- * Démo: zones EXEMPLE (à remplacer par tes vrais polygones).
- * Tu vas les créer facilement avec le "mode édition" (bouton en haut).
- */
 const ZONES: Zone[] = [
   {
     id: "Cerf de Bactriane",
@@ -233,77 +228,12 @@ export default function InteractiveZooMap() {
     () => ZONES.find((z) => z.id === activeId) ?? null,
     [activeId]
   );
-
-  function svgPointFromClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {
-    // Coordonnées en pixels "image" grâce au viewBox (0..IMAGE_W / 0..IMAGE_H)
-    const svg = e.currentTarget;
-    const pt = svg.createSVGPoint();
-    pt.x = e.clientX;
-    pt.y = e.clientY;
-    const screenCTM = svg.getScreenCTM();
-    if (!screenCTM) return null;
-    const loc = pt.matrixTransform(screenCTM.inverse());
-    return { x: Math.round(loc.x), y: Math.round(loc.y) };
-  }
-
-  function onSvgClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {
-    if (!editMode) return;
-
-    const p = svgPointFromClick(e);
-    if (!p) return;
-
-    const next = [...draftPoints, p];
-    setDraftPoints(next);
-
-    // Log direct pour copier/coller
-    const str = next.map((q) => `${q.x},${q.y}`).join(" ");
-    // eslint-disable-next-line no-console
-    console.log("POLYGON_POINTS =", str);
-  }
-
-  function closePolygon() {
-    if (draftPoints.length < 3) return;
-    const str = draftPoints.map((q) => `${q.x},${q.y}`).join(" ");
-    // eslint-disable-next-line no-console
-    console.log("FINAL_POLYGON_POINTS =", str);
-  }
-
-  function resetDraft() {
-    setDraftPoints([]);
-  }
-
-  const draftPointsStr = draftPoints.map((p) => `${p.x},${p.y}`).join(" ");
+  function onSvgClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {}
 
   return (
     <div className="relative h-full w-full">
       <div className="relative w-full h-full overflow-hidden">
-        <div className="absolute top-4 left-4 z-50 flex gap-2 bg-black">
-          <button
-            className="px-3 py-2 rounded-xl border shadow-sm"
-            onClick={() => setEditMode((v) => !v)}
-          >
-            {editMode ? "✅ Mode édition ON" : "🛠️ Mode édition OFF"}
-          </button>
-
-          {editMode && (
-            <>
-              <button
-                className="px-3 py-2 rounded-xl border shadow-sm"
-                onClick={closePolygon}
-              >
-                Clôturer (console)
-              </button>
-              <button
-                className="px-3 py-2 rounded-xl border shadow-sm"
-                onClick={resetDraft}
-              >
-                Reset points
-              </button>
-            </>
-          )}
-        </div>
-
-        {/* Container responsive : on garde le ratio avec aspect-[w/h] */}
+        <div className="absolute top-4 left-4 z-50 flex gap-2 bg-black"></div>
 
         <div className="relative w-full h-full overflow-hidden">
           <Image
@@ -326,51 +256,27 @@ export default function InteractiveZooMap() {
                   key={z.id}
                   points={z.points}
                   onClick={(e) => {
-                    if (editMode) return; // en édition on ne sélectionne pas
+                    if (editMode) return;
                     e.stopPropagation();
                     setActiveId(z.id);
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer opacity-0 hover:opacity-100 transition-opacity"
                   fill={
-                    isActive ? "rgba(59,130,246,0.35)" : "rgba(59,130,246,0.18)"
+                    isActive
+                      ? "rgba(15, 66, 32, 0.35)"
+                      : "rgba(21, 78, 18, 0.18)"
                   }
                   stroke={
-                    isActive ? "rgba(59,130,246,0.9)" : "rgba(59,130,246,0.55)"
+                    isActive
+                      ? "rgba(31, 140, 76, 0.9) "
+                      : "rgba(26, 113, 87, 0.55) "
                   }
                   strokeWidth={3}
                 />
               );
             })}
-
-            {/* Draft polygon (édition) */}
-            {editMode && draftPoints.length > 0 && (
-              <>
-                <polyline
-                  points={draftPointsStr}
-                  fill="rgba(16,185,129,0.12)"
-                  stroke="rgba(16,185,129,0.9)"
-                  strokeWidth={3}
-                />
-                {draftPoints.map((p, i) => (
-                  <circle
-                    key={i}
-                    cx={p.x}
-                    cy={p.y}
-                    r={6}
-                    fill="rgba(16,185,129,0.95)"
-                  />
-                ))}
-              </>
-            )}
           </svg>
         </div>
-
-        {editMode && (
-          <p className="text-sm mt-2 opacity-80">
-            Mode édition : clique pour poser des points → regarde la console
-            pour récupérer <code>POLYGON_POINTS</code>.
-          </p>
-        )}
       </div>
 
       {/* Sidebar */}
@@ -381,7 +287,10 @@ export default function InteractiveZooMap() {
             <p className="opacity-80 mt-2">Clique une zone sur la carte.</p>
           </div>
         ) : (
-          <div>
+          <div
+            id="popup"
+            className="bg-yellow-50 p-20 fixed text-yellow-400 rounded-[200] top-125 left-125 bottom-50 right-50 opacity-65"
+          >
             <div className="flex items-start justify-between gap-2">
               <h2 className="font-semibold text-lg">{activeZone.id}</h2>
               <button

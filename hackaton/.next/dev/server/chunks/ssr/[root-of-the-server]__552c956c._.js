@@ -21,10 +21,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 const IMAGE_W = 2048;
 const IMAGE_H = 1330;
-/**
- * Démo: zones EXEMPLE (à remplacer par tes vrais polygones).
- * Tu vas les créer facilement avec le "mode édition" (bouton en haut).
- */ const ZONES = [
+const ZONES = [
     {
         id: "Cerf de Bactriane",
         points: "1772,883 1911,903 1937,975 1788,1012 1727,944 1763,913 1772,885"
@@ -221,44 +218,7 @@ function InteractiveZooMap() {
     const activeZone = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>ZONES.find((z)=>z.id === activeId) ?? null, [
         activeId
     ]);
-    function svgPointFromClick(e) {
-        // Coordonnées en pixels "image" grâce au viewBox (0..IMAGE_W / 0..IMAGE_H)
-        const svg = e.currentTarget;
-        const pt = svg.createSVGPoint();
-        pt.x = e.clientX;
-        pt.y = e.clientY;
-        const screenCTM = svg.getScreenCTM();
-        if (!screenCTM) return null;
-        const loc = pt.matrixTransform(screenCTM.inverse());
-        return {
-            x: Math.round(loc.x),
-            y: Math.round(loc.y)
-        };
-    }
-    function onSvgClick(e) {
-        if (!editMode) return;
-        const p = svgPointFromClick(e);
-        if (!p) return;
-        const next = [
-            ...draftPoints,
-            p
-        ];
-        setDraftPoints(next);
-        // Log direct pour copier/coller
-        const str = next.map((q)=>`${q.x},${q.y}`).join(" ");
-        // eslint-disable-next-line no-console
-        console.log("POLYGON_POINTS =", str);
-    }
-    function closePolygon() {
-        if (draftPoints.length < 3) return;
-        const str = draftPoints.map((q)=>`${q.x},${q.y}`).join(" ");
-        // eslint-disable-next-line no-console
-        console.log("FINAL_POLYGON_POINTS =", str);
-    }
-    function resetDraft() {
-        setDraftPoints([]);
-    }
-    const draftPointsStr = draftPoints.map((p)=>`${p.x},${p.y}`).join(" ");
+    function onSvgClick(e) {}
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "relative h-full w-full",
         children: [
@@ -266,43 +226,10 @@ function InteractiveZooMap() {
                 className: "relative w-full h-full overflow-hidden",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute top-4 left-4 z-50 flex gap-2 bg-black",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: "px-3 py-2 rounded-xl border shadow-sm",
-                                onClick: ()=>setEditMode((v)=>!v),
-                                children: editMode ? "✅ Mode édition ON" : "🛠️ Mode édition OFF"
-                            }, void 0, false, {
-                                fileName: "[project]/component/zone_modif.tsx",
-                                lineNumber: 281,
-                                columnNumber: 11
-                            }, this),
-                            editMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        className: "px-3 py-2 rounded-xl border shadow-sm",
-                                        onClick: closePolygon,
-                                        children: "Clôturer (console)"
-                                    }, void 0, false, {
-                                        fileName: "[project]/component/zone_modif.tsx",
-                                        lineNumber: 290,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        className: "px-3 py-2 rounded-xl border shadow-sm",
-                                        onClick: resetDraft,
-                                        children: "Reset points"
-                                    }, void 0, false, {
-                                        fileName: "[project]/component/zone_modif.tsx",
-                                        lineNumber: 296,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true)
-                        ]
-                    }, void 0, true, {
+                        className: "absolute top-4 left-4 z-50 flex gap-2 bg-black"
+                    }, void 0, false, {
                         fileName: "[project]/component/zone_modif.tsx",
-                        lineNumber: 280,
+                        lineNumber: 236,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -316,91 +243,47 @@ function InteractiveZooMap() {
                                 className: "object-contain bg-black select-none"
                             }, void 0, false, {
                                 fileName: "[project]/component/zone_modif.tsx",
-                                lineNumber: 309,
+                                lineNumber: 239,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                 className: "absolute inset-0 w-full h-full",
                                 viewBox: `0 0 ${IMAGE_W} ${IMAGE_H}`,
                                 onClick: onSvgClick,
-                                children: [
-                                    ZONES.map((z)=>{
-                                        const isActive = z.id === activeId;
-                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
-                                            points: z.points,
-                                            onClick: (e)=>{
-                                                if (editMode) return; // en édition on ne sélectionne pas
-                                                e.stopPropagation();
-                                                setActiveId(z.id);
-                                            },
-                                            className: "cursor-pointer",
-                                            fill: isActive ? "rgba(59,130,246,0.35)" : "rgba(59,130,246,0.18)",
-                                            stroke: isActive ? "rgba(59,130,246,0.9)" : "rgba(59,130,246,0.55)",
-                                            strokeWidth: 3
-                                        }, z.id, false, {
-                                            fileName: "[project]/component/zone_modif.tsx",
-                                            lineNumber: 325,
-                                            columnNumber: 17
-                                        }, this);
-                                    }),
-                                    editMode && draftPoints.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
-                                                points: draftPointsStr,
-                                                fill: "rgba(16,185,129,0.12)",
-                                                stroke: "rgba(16,185,129,0.9)",
-                                                strokeWidth: 3
-                                            }, void 0, false, {
-                                                fileName: "[project]/component/zone_modif.tsx",
-                                                lineNumber: 348,
-                                                columnNumber: 17
-                                            }, this),
-                                            draftPoints.map((p, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                    cx: p.x,
-                                                    cy: p.y,
-                                                    r: 6,
-                                                    fill: "rgba(16,185,129,0.95)"
-                                                }, i, false, {
-                                                    fileName: "[project]/component/zone_modif.tsx",
-                                                    lineNumber: 355,
-                                                    columnNumber: 19
-                                                }, this))
-                                        ]
-                                    }, void 0, true)
-                                ]
-                            }, void 0, true, {
+                                children: ZONES.map((z)=>{
+                                    const isActive = z.id === activeId;
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
+                                        points: z.points,
+                                        onClick: (e)=>{
+                                            if (editMode) return;
+                                            e.stopPropagation();
+                                            setActiveId(z.id);
+                                        },
+                                        className: "cursor-pointer opacity-0 hover:opacity-100 transition-opacity",
+                                        fill: isActive ? "rgba(15, 66, 32, 0.35)" : "rgba(21, 78, 18, 0.18)",
+                                        stroke: isActive ? "rgba(31, 140, 76, 0.9) " : "rgba(26, 113, 87, 0.55) ",
+                                        strokeWidth: 3
+                                    }, z.id, false, {
+                                        fileName: "[project]/component/zone_modif.tsx",
+                                        lineNumber: 255,
+                                        columnNumber: 17
+                                    }, this);
+                                })
+                            }, void 0, false, {
                                 fileName: "[project]/component/zone_modif.tsx",
-                                lineNumber: 317,
+                                lineNumber: 247,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/component/zone_modif.tsx",
-                        lineNumber: 308,
+                        lineNumber: 238,
                         columnNumber: 9
-                    }, this),
-                    editMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm mt-2 opacity-80",
-                        children: [
-                            "Mode édition : clique pour poser des points → regarde la console pour récupérer ",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
-                                children: "POLYGON_POINTS"
-                            }, void 0, false, {
-                                fileName: "[project]/component/zone_modif.tsx",
-                                lineNumber: 371,
-                                columnNumber: 28
-                            }, this),
-                            "."
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/component/zone_modif.tsx",
-                        lineNumber: 369,
-                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/component/zone_modif.tsx",
-                lineNumber: 279,
+                lineNumber: 235,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
@@ -412,7 +295,7 @@ function InteractiveZooMap() {
                             children: "Infos"
                         }, void 0, false, {
                             fileName: "[project]/component/zone_modif.tsx",
-                            lineNumber: 380,
+                            lineNumber: 286,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -420,15 +303,17 @@ function InteractiveZooMap() {
                             children: "Clique une zone sur la carte."
                         }, void 0, false, {
                             fileName: "[project]/component/zone_modif.tsx",
-                            lineNumber: 381,
+                            lineNumber: 287,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/component/zone_modif.tsx",
-                    lineNumber: 379,
+                    lineNumber: 285,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    id: "popup",
+                    className: "bg-yellow-50 p-20 fixed text-yellow-400 rounded-[200] top-125 left-125 bottom-50 right-50 opacity-65",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-start justify-between gap-2",
@@ -438,7 +323,7 @@ function InteractiveZooMap() {
                                     children: activeZone.id
                                 }, void 0, false, {
                                     fileName: "[project]/component/zone_modif.tsx",
-                                    lineNumber: 386,
+                                    lineNumber: 295,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -447,13 +332,13 @@ function InteractiveZooMap() {
                                     children: "✕"
                                 }, void 0, false, {
                                     fileName: "[project]/component/zone_modif.tsx",
-                                    lineNumber: 387,
+                                    lineNumber: 296,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/component/zone_modif.tsx",
-                            lineNumber: 385,
+                            lineNumber: 294,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -464,7 +349,7 @@ function InteractiveZooMap() {
                                     children: "Animaux"
                                 }, void 0, false, {
                                     fileName: "[project]/component/zone_modif.tsx",
-                                    lineNumber: 396,
+                                    lineNumber: 305,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -475,35 +360,35 @@ function InteractiveZooMap() {
                                             children: a
                                         }, a, false, {
                                             fileName: "[project]/component/zone_modif.tsx",
-                                            lineNumber: 399,
+                                            lineNumber: 308,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/component/zone_modif.tsx",
-                                    lineNumber: 397,
+                                    lineNumber: 306,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/component/zone_modif.tsx",
-                            lineNumber: 395,
+                            lineNumber: 304,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/component/zone_modif.tsx",
-                    lineNumber: 384,
+                    lineNumber: 290,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/component/zone_modif.tsx",
-                lineNumber: 377,
+                lineNumber: 283,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/component/zone_modif.tsx",
-        lineNumber: 278,
+        lineNumber: 234,
         columnNumber: 5
     }, this);
 }
