@@ -333,7 +333,7 @@ function InteractiveZooMap() {
                                                 e.stopPropagation();
                                                 setActiveId(z.id);
                                             },
-                                            className: "cursor-pointer",
+                                            className: "cursor-pointer opacity-0",
                                             fill: isActive ? "rgba(59,130,246,0.35)" : "rgba(59,130,246,0.18)",
                                             stroke: isActive ? "rgba(59,130,246,0.9)" : "rgba(59,130,246,0.55)",
                                             strokeWidth: 3
@@ -429,6 +429,8 @@ function InteractiveZooMap() {
                     lineNumber: 379,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    id: "popup",
+                    className: "bg-yellow-50 p-20 fixed text-yellow-400 rounded-[200] top-125 left-125 bottom-50 right-50 opacity-65",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-start justify-between gap-2",

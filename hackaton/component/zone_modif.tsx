@@ -330,7 +330,7 @@ export default function InteractiveZooMap() {
                     e.stopPropagation();
                     setActiveId(z.id);
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer opacity-0"
                   fill={
                     isActive ? "rgba(59,130,246,0.35)" : "rgba(59,130,246,0.18)"
                   }
@@ -381,7 +381,7 @@ export default function InteractiveZooMap() {
             <p className="opacity-80 mt-2">Clique une zone sur la carte.</p>
           </div>
         ) : (
-          <div>
+          <div id="popup" className="bg-yellow-50 p-20 fixed text-yellow-400 rounded-[200] top-125 left-125 bottom-50 right-50 opacity-65">
             <div className="flex items-start justify-between gap-2">
               <h2 className="font-semibold text-lg">{activeZone.id}</h2>
               <button
