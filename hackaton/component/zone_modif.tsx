@@ -30,7 +30,7 @@ const ZONES: Zone[] = [
     poids: " mâles de 110 à 220 kg - femelles de 75 à 120 kg ",
     longévité: " 18 ans",
     IUCN: " Non menacé au niveau spécifique",
-    image: "",
+    image: "/pictures/cerf-de-bactriane.jpg",
   },
 
   {
@@ -44,7 +44,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 240 à 405 kg kg - femelles de 210 à 253 kg ",
     longévité: "20 ans ",
     IUCN: " En danger critique",
-    image: "",
+    image: "/pictures/okapi.jpg",
   },
   {
     id: "Hippopotame pygmée",
@@ -57,7 +57,7 @@ const ZONES: Zone[] = [
     poids: " 160 à 275 kg",
     longévité: "43 ans en parc zoologique - Inconnu dans la nature ",
     IUCN: " En Danger",
-    image: "",
+    image: "/pictures/hippopotame-nain.jpg",
   },
   {
     id: "Faux-gavial d'Afrique",
@@ -70,7 +70,7 @@ const ZONES: Zone[] = [
     poids: " 200 kg",
     longévité: "32 à 38 ans en parc zoologique - Inconnu dans la nature ",
     IUCN: "En danger critique ",
-    image: "",
+    image: "/pictures/faux-gavial.jpg",
   },
   {
     id: "Oryctérope",
@@ -84,7 +84,7 @@ const ZONES: Zone[] = [
     poids: "40 à 80 kg ",
     longévité: " 18 ans dans la nature - 23 ans en parc zoologique",
     IUCN: "Non menacé ",
-    image: "",
+    image: "/pictures/orycteropes.jpg",
   },
   {
     id: "Macaque à crète",
@@ -280,7 +280,7 @@ const ZONES: Zone[] = [
     poids: "600 à 800 g",
     longévité: "80 ans",
     IUCN: "En danger critique d'extinction",
-    image: "/pictures/ara-a-gorge.jpg",
+    image: "/pictures/ara-a-gorge-bleue.jpg",
   },
   {
     id: "Manchot du Cap",
