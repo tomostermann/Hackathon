@@ -96,7 +96,7 @@ const ZONES: Zone[] = [
     poids: " mâles : 10 kg - femelles : 5,5 kg",
     longévité: "18 ans dans la nature, 34 ans en zoo ",
     IUCN: " En danger critique d'extinction",
-    image: "",
+    image: "/pictures/macaque-a-crete.jpg",
   },
   {
     id: "Tapir malais",
@@ -108,7 +108,7 @@ const ZONES: Zone[] = [
     poids: " mâles : 250 kg femelles : 350 kg",
     longévité: "30 ans ",
     IUCN: " En danger",
-    image: "",
+    image: "/pictures/tapir-malais.jpg",
   },
   {
     id: "Casoar à casque",
@@ -120,10 +120,10 @@ const ZONES: Zone[] = [
     poids: "50 à 85 kg ",
     longévité: "30 ans ",
     IUCN: " Non menacé",
-    image: "",
+    image: "/pictures/casoar-a-casque.jpg",
   },
   {
-    id: "Vautour moine, mouton de Ouessant",
+    id: "Mouton de Ouessant",
     points: "1208,735 1174,809 1201,822 1261,796 1240,739 1207,736",
     famille: "Bovidae ",
     origine: " Île d'Ouessant (Bretagne)",
@@ -132,7 +132,7 @@ const ZONES: Zone[] = [
     poids: "11 à 20 kg ",
     longévité: "12 ans ",
     IUCN: " non classé car domestique",
-    image: "",
+    image: "/pictures/mouton-d-ouessant.jpg",
   },
   {
     id: "Nandou de Darwin et vigogne",
@@ -145,10 +145,10 @@ const ZONES: Zone[] = [
     poids: "15 à 25 kg ",
     longévité: "10 ans ",
     IUCN: "Préoccupation mineure ",
-    image: "",
+    image: "/pictures/nandou-de-darwin.jpg",
   },
   {
-    id: "Girafe de Kordofan",
+    id: "Girafe du Kordofan",
     points: "1354,691 1316,719 1348,784 1422,780 1409,723 1357,693",
     famille: "Giraffidés ",
     origine: " Afrique centrale",
@@ -157,10 +157,10 @@ const ZONES: Zone[] = [
     poids: "Mâles : 1100 à 1900 kg - Femelles : 950 à 1100 kg ",
     longévité: "25 ans dans la nature - 36 ans en parc zoologique ",
     IUCN: " En danger critique",
-    image: "",
+    image: "/pictures/girafes-du-kordofan.jpg",
   },
   {
-    id: "Flamant rouge, flamant rose et bernache à cou roux",
+    id: "Flamant rouge",
     points: "1554,693 1564,736 1642,731 1620,664 1554,693",
     famille: " Phoenicopteridae",
     origine: "Caraïbes ",
@@ -169,7 +169,7 @@ const ZONES: Zone[] = [
     poids: " 2 à 4 kg",
     longévité: "40 ans ",
     IUCN: "Préoccupation mineure ",
-    image: "",
+    image: "/pictures/flamant-rouge.jpg",
   },
 
   {
@@ -182,10 +182,10 @@ const ZONES: Zone[] = [
     poids: "55 à 65 kg ",
     longévité: "15 à 20 ans ",
     IUCN: " non menacé",
-    image: "",
+    image: "/pictures/alpaga.jpg",
   },
   {
-    id: "Baudet de Poitou",
+    id: "Baudet du Poitou",
     points:
       "1806,606 1781,604 1761,616 1764,642 1788,667 1815,669 1824,627 1809,605",
     famille: " Equidae",
@@ -195,10 +195,10 @@ const ZONES: Zone[] = [
     poids: " 350 - 450 kg",
     longévité: "30 à 50 ans",
     IUCN: " non classé car domestique mais race devenue rare",
-    image: "",
+    image: "/pictures/baudet-du-poitou.jpg",
   },
   {
-    id: "Mini-ferme (chèvre naine, basse-cour, pécari du Chaco)",
+    id: "Chèvre naine",
     points: "1785,547 1765,545 1765,594 1810,595 1808,548 1786,548",
     famille: " Bovidae",
     origine: "Sénégal et Tibet ",
@@ -207,10 +207,10 @@ const ZONES: Zone[] = [
     poids: " mâle 17-30 kg, femelle 12-20 kg",
     longévité: "14 ans ",
     IUCN: " non classé car domestique",
-    image: "",
+    image: "/pictures/chevre-naine.jpg",
   },
   {
-    id: "Singes (cercopithèque de l'Hoest, atèle, capucin)",
+    id: "Cercopithèque roloway",
     points: "1361,585 1339,598 1370,618 1395,605 1361,585",
     famille: "Cercopithecidae ",
     origine: "Afrique de l'Ouest ",
@@ -219,7 +219,7 @@ const ZONES: Zone[] = [
     poids: "mâles 5 kg - femelles 4 kg ",
     longévité: "30 ans ",
     IUCN: "En danger critique d'extinction ",
-    image: "",
+    image: "/pictures/cercopitheque-roloway.jpg",
   },
 
   {
@@ -232,10 +232,10 @@ const ZONES: Zone[] = [
     poids: "350 à 450 kg ",
     longévité: " 18 ans",
     IUCN: " en danger",
-    image: "",
+    image: "/pictures/zebre-de-grevy.jpg",
   },
   {
-    id: "Petite Amazonie (tamarin, ouistiti, titi roux, saki à face blanche, saïmiri et tatou à trois bandes, dendrobate)",
+    id: "Tamarin empereur",
     points: "1461,586 1412,593 1461,625 1493,606 1461,586",
     famille: " Callithrichidae",
     origine: "Haut Amazone ",
@@ -244,7 +244,7 @@ const ZONES: Zone[] = [
     poids: "400 à 550 g ",
     longévité: " 20 ans",
     IUCN: "Préoccupation mineure ",
-    image: "",
+    image: "/pictures/tamarin-empereur.jpg",
   },
   {
     id: "Panda roux",
