@@ -245,7 +245,7 @@ const ZONES: Zone[] = [
     image: "",
   },
   {
-    id: "Panda roux, mutjac et loutre laine",
+    id: "Panda roux",
     points: "1285,471 1228,474 1252,519 1317,509 1287,472",
     famille: " Ailuridae",
     origine: "Sud-est asiatique (du Népal au sud-ouest de la Chine) ",
@@ -254,7 +254,7 @@ const ZONES: Zone[] = [
     poids: "3 à 6 kg ",
     longévité: "10 an dans la nature, 13 en captivité ",
     IUCN: " vulnérable",
-    image: "",
+    image: "/pictures/panda-roux.jpg",
   },
   {
     id: "Loup à crinière",
@@ -278,7 +278,7 @@ const ZONES: Zone[] = [
     poids: "600 à 800 g",
     longévité: "80 ans",
     IUCN: "En danger critique d'extinction",
-    image: "",
+    image: "/pictures/ara-a-gorge.jpg",
   },
   {
     id: "Manchot du Cap",
@@ -290,7 +290,7 @@ const ZONES: Zone[] = [
     poids: "3 kg",
     longévité: "11 ans",
     IUCN: "En danger",
-    image: "",
+    image: "/pictures/manchot-du-cap.jpg",
   },
   {
     id: "Ibis rouge",
@@ -302,7 +302,7 @@ const ZONES: Zone[] = [
     poids: "772 à 935 g",
     longévité: "16 ans",
     IUCN: "Non menacée",
-    image: "",
+    image: "/pictures/ibis-rouge.jpg",
   },
   {
     id: "Chameau de Bactriane",
@@ -315,7 +315,7 @@ const ZONES: Zone[] = [
     poids: "450 à 500 kg",
     longévité: "35 ans",
     IUCN: "en danger critique d'extinction",
-    image: "",
+    image: "/pictures/chameau-de-bactriane.jpg",
   },
   {
     id: "Kulan",
@@ -327,7 +327,7 @@ const ZONES: Zone[] = [
     poids: "200 à 260 kg",
     longévité: "14 ans dans la nature, 26 ans en captivité",
     IUCN: "En danger",
-    image: "",
+    image: "/pictures/kulan.jpg",
   },
   {
     id: "Boeuf musqué",
@@ -340,7 +340,7 @@ const ZONES: Zone[] = [
     poids: "200 à 410 kg (mâles 25% plus grands et lourds)",
     longévité: "20 ans",
     IUCN: "non menacé",
-    image: "",
+    image: "/pictures/boeuf-musque.jpg",
   },
   {
     id: "Renard polaire",
@@ -353,7 +353,7 @@ const ZONES: Zone[] = [
     poids: "3 à 4,5 kg",
     longévité: "16 ans",
     IUCN: "non menacé",
-    image: "",
+    image: "/pictures/renard-polaire.jpg",
   },
   {
     id: "Ours polaire",
@@ -366,7 +366,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 300 à 650 kg - femelles de 150 à 250 kg (jusqu'à 500 si gestantes)",
     longévité: "30 ans dans la nature, 38 en captivité",
     IUCN: "vulnérable",
-    image: "",
+    image: "/pictures/ours-polaire.jpg",
   },
   {
     id: "Loup du Canada",
@@ -379,7 +379,7 @@ const ZONES: Zone[] = [
     poids: "jusqu'à 62 kg",
     longévité: "15 ans dans la nature, 20 en captivité",
     IUCN: "non menacé",
-    image: "",
+    image: "/pictures/loup-du-canada.jpg",
   },
   {
     id: "Lynx boréal",
@@ -392,7 +392,7 @@ const ZONES: Zone[] = [
     poids: "18 à 25 kg",
     longévité: "17 ans dans la nature, 24 en captivité",
     IUCN: "non menacé globalement, localement menacé",
-    image: "",
+    image: "/pictures/lynx-boreal.jpg",
   },
   {
     id: "Panthère de l'amour",
@@ -404,7 +404,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 50 à 60 kg - femelles de 30 à 40 kg",
     longévité: "15 ans dans la nature, 20 en captivité",
     IUCN: "En danger critique d'extinction",
-    image: "",
+    image: "/pictures/panthere-de-l-amour.jpg",
   },
   {
     id: "Pélican frisé",
@@ -416,7 +416,7 @@ const ZONES: Zone[] = [
     poids: "10 à 13 kg",
     longévité: "50 ans",
     IUCN: "Quasi-menacé",
-    image: "",
+    image: "/pictures/pelican-frise.jpg",
   },
   {
     id: "Otarie à crinière",
@@ -428,7 +428,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 300 à 350 kg - femelles 144 kg",
     longévité: "20 ans",
     IUCN: "non menacé",
-    image: "",
+    image: "/pictures/otarie-a-criniere.jpg",
   },
   {
     id: "Cercopithèque",
@@ -440,7 +440,7 @@ const ZONES: Zone[] = [
     poids: "mâles 6 à 10 kg - femelles 3 à 5 kg",
     longévité: "24 ans",
     IUCN: "Vulnérable",
-    image: "",
+    image: "/pictures/cercopitheque.jpg",
   },
   {
     id: "Flamant rouge",
@@ -452,7 +452,7 @@ const ZONES: Zone[] = [
     poids: "2 à 4 kg",
     longévité: "40 ans",
     IUCN: "Préoccupation mineure",
-    image: "",
+    image: "/pictures/flamant-rouge.jpg",
   },
   {
     id: "Suricate",
@@ -464,7 +464,7 @@ const ZONES: Zone[] = [
     poids: "600 à 900 g",
     longévité: "8 ans dans la nature, 12 ans en captivité",
     IUCN: "non menacé",
-    image: "",
+    image: "/pictures/suricate.jpg",
   },
   {
     id: "Chien des buissons",
@@ -476,7 +476,7 @@ const ZONES: Zone[] = [
     poids: "5 à 8 kg",
     longévité: "10 ans",
     IUCN: "quasi menacé",
-    image: "",
+    image: "/pictures/chien.jpg",
   },
   {
     id: "Gibbon à favoris",
@@ -488,7 +488,7 @@ const ZONES: Zone[] = [
     poids: "6 à 7 kg",
     longévité: "45 ans en captivité (inconnu dans la nature)",
     IUCN: "En danger d'extinction",
-    image: "",
+    image: "/pictures/gibbon.jpg",
   },
   {
     id: "Tortue terrestre",
