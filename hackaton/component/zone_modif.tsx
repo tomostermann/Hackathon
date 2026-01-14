@@ -13,6 +13,7 @@ type Zone = {
   poids: string;
   longévité: string;
   IUCN: string;
+  image: string;
 };
 
 const IMAGE_W = 2048;
@@ -29,6 +30,7 @@ const ZONES: Zone[] = [
     poids: " mâles de 110 à 220 kg - femelles de 75 à 120 kg ",
     longévité: " 18 ans",
     IUCN: " Non menacé au niveau spécifique",
+    image: "",
   },
 
   {
@@ -42,6 +44,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 240 à 405 kg kg - femelles de 210 à 253 kg ",
     longévité: "20 ans ",
     IUCN: " En danger critique",
+    image: "",
   },
   {
     id: "Hippopotame pygmée",
@@ -54,6 +57,7 @@ const ZONES: Zone[] = [
     poids: " 160 à 275 kg",
     longévité: "43 ans en parc zoologique - Inconnu dans la nature ",
     IUCN: " En Danger",
+    image: "",
   },
   {
     id: "Faux-gavial d'Afrique",
@@ -66,6 +70,7 @@ const ZONES: Zone[] = [
     poids: " 200 kg",
     longévité: "32 à 38 ans en parc zoologique - Inconnu dans la nature ",
     IUCN: "En danger critique ",
+    image: "",
   },
   {
     id: "Oryctérope",
@@ -79,6 +84,7 @@ const ZONES: Zone[] = [
     poids: "40 à 80 kg ",
     longévité: " 18 ans dans la nature - 23 ans en parc zoologique",
     IUCN: "Non menacé ",
+    image: "",
   },
   {
     id: "Macaque à crète",
@@ -90,6 +96,7 @@ const ZONES: Zone[] = [
     poids: " mâles : 10 kg - femelles : 5,5 kg",
     longévité: "18 ans dans la nature, 34 ans en zoo ",
     IUCN: " En danger critique d'extinction",
+    image: "",
   },
   {
     id: "Tapir malais",
@@ -101,6 +108,7 @@ const ZONES: Zone[] = [
     poids: " mâles : 250 kg femelles : 350 kg",
     longévité: "30 ans ",
     IUCN: " En danger",
+    image: "",
   },
   {
     id: "Casoar à casque",
@@ -112,6 +120,7 @@ const ZONES: Zone[] = [
     poids: "50 à 85 kg ",
     longévité: "30 ans ",
     IUCN: " Non menacé",
+    image: "",
   },
   {
     id: "Vautour moine, mouton de Ouessant",
@@ -123,6 +132,7 @@ const ZONES: Zone[] = [
     poids: "11 à 20 kg ",
     longévité: "12 ans ",
     IUCN: " non classé car domestique",
+    image: "",
   },
   {
     id: "Nandou de Darwin et vigogne",
@@ -135,6 +145,7 @@ const ZONES: Zone[] = [
     poids: "15 à 25 kg ",
     longévité: "10 ans ",
     IUCN: "Préoccupation mineure ",
+    image: "",
   },
   {
     id: "Girafe de Kordofan",
@@ -146,6 +157,7 @@ const ZONES: Zone[] = [
     poids: "Mâles : 1100 à 1900 kg - Femelles : 950 à 1100 kg ",
     longévité: "25 ans dans la nature - 36 ans en parc zoologique ",
     IUCN: " En danger critique",
+    image: "",
   },
   {
     id: "Flamant rouge, flamant rose et bernache à cou roux",
@@ -157,6 +169,7 @@ const ZONES: Zone[] = [
     poids: " 2 à 4 kg",
     longévité: "40 ans ",
     IUCN: "Préoccupation mineure ",
+    image: "",
   },
 
   {
@@ -169,6 +182,7 @@ const ZONES: Zone[] = [
     poids: "55 à 65 kg ",
     longévité: "15 à 20 ans ",
     IUCN: " non menacé",
+    image: "",
   },
   {
     id: "Baudet de Poitou",
@@ -181,6 +195,7 @@ const ZONES: Zone[] = [
     poids: " 350 - 450 kg",
     longévité: "30 à 50 ans",
     IUCN: " non classé car domestique mais race devenue rare",
+    image: "",
   },
   {
     id: "Mini-ferme (chèvre naine, basse-cour, pécari du Chaco)",
@@ -192,6 +207,7 @@ const ZONES: Zone[] = [
     poids: " mâle 17-30 kg, femelle 12-20 kg",
     longévité: "14 ans ",
     IUCN: " non classé car domestique",
+    image: "",
   },
   {
     id: "Singes (cercopithèque de l'Hoest, atèle, capucin)",
@@ -203,6 +219,7 @@ const ZONES: Zone[] = [
     poids: "mâles 5 kg - femelles 4 kg ",
     longévité: "30 ans ",
     IUCN: "En danger critique d'extinction ",
+    image: "",
   },
 
   {
@@ -215,6 +232,7 @@ const ZONES: Zone[] = [
     poids: "350 à 450 kg ",
     longévité: " 18 ans",
     IUCN: " en danger",
+    image: "",
   },
   {
     id: "Petite Amazonie (tamarin, ouistiti, titi roux, saki à face blanche, saïmiri et tatou à trois bandes, dendrobate)",
@@ -226,6 +244,7 @@ const ZONES: Zone[] = [
     poids: "400 à 550 g ",
     longévité: " 20 ans",
     IUCN: "Préoccupation mineure ",
+    image: "",
   },
   {
     id: "Panda roux, mutjac et loutre laine",
@@ -237,6 +256,7 @@ const ZONES: Zone[] = [
     poids: "3 à 6 kg ",
     longévité: "10 an dans la nature, 13 en captivité ",
     IUCN: " vulnérable",
+    image: "",
   },
   {
     id: "Loup à crinière",
@@ -248,6 +268,7 @@ const ZONES: Zone[] = [
     poids: "20 à 30 kg",
     longévité: "15 ans en captivité",
     IUCN: "quasi-menacé",
+    image: "/pictures/loup-a-criniere.jpg",
   },
   {
     id: "Ara à gorge bleue",
@@ -259,6 +280,7 @@ const ZONES: Zone[] = [
     poids: "600 à 800 g",
     longévité: "80 ans",
     IUCN: "En danger critique d'extinction",
+    image: "",
   },
   {
     id: "Manchot du Cap",
@@ -270,6 +292,7 @@ const ZONES: Zone[] = [
     poids: "3 kg",
     longévité: "11 ans",
     IUCN: "En danger",
+    image: "",
   },
   {
     id: "Ibis rouge",
@@ -281,6 +304,7 @@ const ZONES: Zone[] = [
     poids: "772 à 935 g",
     longévité: "16 ans",
     IUCN: "Non menacée",
+    image: "",
   },
   {
     id: "Chameau de Bactriane",
@@ -293,6 +317,7 @@ const ZONES: Zone[] = [
     poids: "450 à 500 kg",
     longévité: "35 ans",
     IUCN: "en danger critique d'extinction",
+    image: "",
   },
   {
     id: "Kulan",
@@ -304,6 +329,7 @@ const ZONES: Zone[] = [
     poids: "200 à 260 kg",
     longévité: "14 ans dans la nature, 26 ans en captivité",
     IUCN: "En danger",
+    image: "",
   },
   {
     id: "Boeuf musqué",
@@ -316,6 +342,7 @@ const ZONES: Zone[] = [
     poids: "200 à 410 kg (mâles 25% plus grands et lourds)",
     longévité: "20 ans",
     IUCN: "non menacé",
+    image: "",
   },
   {
     id: "Renard polaire",
@@ -328,6 +355,7 @@ const ZONES: Zone[] = [
     poids: "3 à 4,5 kg",
     longévité: "16 ans",
     IUCN: "non menacé",
+    image: "",
   },
   {
     id: "Ours polaire",
@@ -341,6 +369,7 @@ const ZONES: Zone[] = [
       "mâles de 300 à 650 kg - femelles de 150 à 250 kg (jusqu'à 500 si gestantes)",
     longévité: "30 ans dans la nature, 38 en captivité",
     IUCN: "vulnérable",
+    image: "",
   },
   {
     id: "Loup du Canada",
@@ -353,6 +382,7 @@ const ZONES: Zone[] = [
     poids: "jusqu'à 62 kg",
     longévité: "15 ans dans la nature, 20 en captivité",
     IUCN: "non menacé",
+    image: "",
   },
   {
     id: "Lynx boréal",
@@ -365,6 +395,7 @@ const ZONES: Zone[] = [
     poids: "18 à 25 kg",
     longévité: "17 ans dans la nature, 24 en captivité",
     IUCN: "non menacé globalement, localement menacé",
+    image: "",
   },
   {
     id: "Panthère de l'amour",
@@ -377,6 +408,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 50 à 60 kg - femelles de 30 à 40 kg",
     longévité: "15 ans dans la nature, 20 en captivité",
     IUCN: "En danger critique d'extinction",
+    image: "",
   },
   {
     id: "Pélican frisé",
@@ -388,6 +420,7 @@ const ZONES: Zone[] = [
     poids: "10 à 13 kg",
     longévité: "50 ans",
     IUCN: "Quasi-menacé",
+    image: "",
   },
   {
     id: "Otarie à crinière",
@@ -399,6 +432,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 300 à 350 kg - femelles 144 kg",
     longévité: "20 ans",
     IUCN: "non menacé",
+    image: "",
   },
   {
     id: "Cercopithèque",
@@ -410,6 +444,7 @@ const ZONES: Zone[] = [
     poids: "mâles 6 à 10 kg - femelles 3 à 5 kg",
     longévité: "24 ans",
     IUCN: "Vulnérable",
+    image: "",
   },
   {
     id: "Flamant rouge",
@@ -421,6 +456,7 @@ const ZONES: Zone[] = [
     poids: "2 à 4 kg",
     longévité: "40 ans",
     IUCN: "Préoccupation mineure",
+    image: "",
   },
   {
     id: "Suricate",
@@ -432,6 +468,7 @@ const ZONES: Zone[] = [
     poids: "600 à 900 g",
     longévité: "8 ans dans la nature, 12 ans en captivité",
     IUCN: "non menacé",
+    image: "",
   },
   {
     id: "Chien des buissons",
@@ -443,6 +480,7 @@ const ZONES: Zone[] = [
     poids: "5 à 8 kg",
     longévité: "10 ans",
     IUCN: "quasi menacé",
+    image: "",
   },
   {
     id: "Gibbon à favoris",
@@ -454,6 +492,7 @@ const ZONES: Zone[] = [
     poids: "6 à 7 kg",
     longévité: "45 ans en captivité (inconnu dans la nature)",
     IUCN: "En danger d'extinction",
+    image: "",
   },
   {
     id: "Tortue terrestre",
@@ -465,9 +504,10 @@ const ZONES: Zone[] = [
     poids: "36-50 Kg",
     longévité: "55 ans",
     IUCN: "Vulnérable",
+    image: "/pictures/tortue.jpg",
   },
   {
-    id: "Wallabi des rochers",
+    id: "Wallaby des rochers",
     points: "1097,718 1115,717 1148,720 1142,824 1106,811 1095,797 1096,719",
     famille: "Macropodidae",
     origine: "Sud et centre de l'Australie",
@@ -476,6 +516,7 @@ const ZONES: Zone[] = [
     poids: "Mâle : 8 à 11 kg - femelles : 3 à 7 kg",
     longévité: "11 ans",
     IUCN: "Quasi menacée",
+    image: "/pictures/wallaby-des-rochers.jpg",
   },
   {
     id: "Gazelles",
@@ -488,6 +529,7 @@ const ZONES: Zone[] = [
     poids: "Mâles 16,5 kg - Femelles 12,6 kg",
     longévité: "12 ans dans la nature - 15 ans en parc zoologique",
     IUCN: "Vulnérable",
+    image: "/pictures/gazelle.jpg",
   },
   {
     id: "Addax",
@@ -500,6 +542,7 @@ const ZONES: Zone[] = [
     poids: "mâles de 100 à 125 kg - femelles de 95 à 110 kg",
     longévité: "20 ans (record de 28 ans)",
     IUCN: "en danger critique d'extinction",
+    image: "/pictures/addax.jpg",
   },
 ];
 
@@ -575,11 +618,22 @@ export default function InteractiveZooMap() {
             className="bg-[#f4f0de]/90 fixed text-[#9b8457] rounded-[200] top-130 left-125 bottom-50 right-50"
           >
             <div className="flex items-start justify-between gap-2">
-              <p className="font-black text-2xl text-shadow-lg/10 mt-7 ml-135 mr-25 text-center">
+              {activeZone?.image && (
+                <div className="fixed top-132.5 left-130 p-6 z-[9999]">
+                  <Image
+                    src={activeZone.image}
+                    alt={activeZone.id}
+                    width={300}
+                    height={200}
+                    className="rounded-full object-cover border-4 border-[#9b8457] shadow-lg"
+                  />
+                </div>
+              )}
+              <p className="font-black text-2xl text-shadow-lg/10 mt-8 ml-130 whitespace-nowrap">
                 {activeZone.id}
               </p>
               <button
-                className="px-2 py-1 rounded-lg border text-black mt-10 ml-30"
+                className="px-2 py-1 rounded-lg border text-black mt-8 ml-40"
                 onClick={() => setActiveId(null)}
               >
                 ✕
