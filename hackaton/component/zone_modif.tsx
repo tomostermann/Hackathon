@@ -638,13 +638,15 @@ export default function InteractiveZooMap() {
               >
                 ✕
               </button>
-              <p className="font-medium text-lg">{activeZone.famille}</p>
-              <p className="font-medium text-lg">{activeZone.origine}</p>
-              <p className="font-medium text-lg">{activeZone.habitat}</p>
-              <p className="font-medium text-lg">{activeZone.taille}</p>
-              <p className="font-medium text-lg">{activeZone.poids}</p>
-              <p className="font-medium text-lg">{activeZone.longévité}</p>
-              <p className="font-medium text-lg">{activeZone.IUCN}</p>
+              <div className="mt-auto space-y-1 text-black ">
+                <p className="font-medium text-lg">{activeZone.famille}</p>
+                <p className="font-medium text-lg">{activeZone.origine}</p>
+                <p className="font-medium text-lg">{activeZone.habitat}</p>
+                <p className="font-medium text-lg">{activeZone.taille}</p>
+                <p className="font-medium text-lg">{activeZone.poids}</p>
+                <p className="font-medium text-lg">{activeZone.longévité}</p>
+                <p className="font-medium text-lg">{activeZone.IUCN}</p>
+              </div>
             </div>
           </div>
         )}
