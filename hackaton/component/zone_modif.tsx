@@ -56,7 +56,7 @@ const ZONES: Zone[] = [
     points:
       "1558,805 1528,812 1531,831 1521,848 1525,854 1722,853 1704,820 1626,799 1624,821 1602,828 1576,821 1560,807",
     famille: " Hippopotamidés",
-    origine: "Pointe Ouest de l'Afrique (Libéria et alentours) ",
+    origine: "Pointe Ouest de l'Afrique",
     habitat: "Zones boisées proches de marécages et points d'eau ",
     taille: " 1,50 à 1,75 m",
     poids: " 160 à 275 kg",
@@ -84,7 +84,7 @@ const ZONES: Zone[] = [
     famille: " Orycteropodidés",
     origine: "Afrique Subsaharienne ",
     habitat:
-      "Nombreux habitats différents, pourvu qu'il y ait des fourmis et termites : prairies, savanes, forêts ",
+      "Nombreux habitats différents : prairies, savanes, forêts ",
     taille: "100 à 158 cm ",
     poids: "40 à 80 kg ",
     longévité: " 18 ans dans la nature - 23 ans en parc zoologique",
@@ -195,7 +195,7 @@ const ZONES: Zone[] = [
       "1806,606 1781,604 1761,616 1764,642 1788,667 1815,669 1824,627 1809,605",
     famille: " Equidae",
     origine: "Marais poitevin ",
-    habitat: " en élevage uniquement",
+    habitat: "En élevage uniquement",
     taille: "140 - 155 cm ",
     poids: " 350 - 450 kg",
     longévité: "30 à 50 ans",
@@ -255,8 +255,8 @@ const ZONES: Zone[] = [
     id: "Panda roux",
     points: "1285,471 1228,474 1252,519 1317,509 1287,472",
     famille: " Ailuridae",
-    origine: "Sud-est asiatique (du Népal au sud-ouest de la Chine) ",
-    habitat: "Forêts tempérées mixtes de chênes, sapins et bambous ",
+    origine: "Sud-est asiatique",
+    habitat: "Forêts tempérées mixtes de chênes, sapins et bambous",
     taille: " 51 à 73 cm + 28 à 49 cm de queue",
     poids: "3 à 6 kg ",
     longévité: "10 an dans la nature, 13 en captivité ",
@@ -371,7 +371,7 @@ const ZONES: Zone[] = [
     habitat: "Banquise, toundra",
     taille: "180 à 280 cm",
     poids:
-      "mâles de 300 à 650 kg - femelles de 150 à 250 kg (jusqu'à 500 si gestantes)",
+      "mâles de 300 à 650 kg - femelles de 150 à 250 kg",
     longévité: "30 ans dans la nature, 38 en captivité",
     IUCN: "vulnérable",
     image: "/pictures/ours-polaire.jpg",
@@ -637,7 +637,7 @@ export default function InteractiveZooMap() {
           >
             <div className="flex items-start justify-between gap-2">
               {activeZone?.image && (
-                <div className="fixed top-132.5 left-130 p-6 z-[9999]">
+                <div className="fixed top-132.5 left-127 p-6 z-[9999]">
                   <Image
                     src={activeZone.image}
                     alt={activeZone.id}
@@ -647,7 +647,7 @@ export default function InteractiveZooMap() {
                   />
                 </div>
               )}
-              <p className="font-black text-2xl text-black fixed text-shadow-lg/10 mt-8 ml-130 mr-110 text-center whitespace-nowrap">
+              <p className="font-black text-2xl text-black fixed text-shadow-lg/10 mt-8 ml-120 mr-110 text-center whitespace-nowrap">
                 {activeZone.id}
               </p>
               <div className="mt-8 ml-215 fixed">
