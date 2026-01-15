@@ -16,6 +16,11 @@ type Zone = {
   image: string;
 };
 
+type InfoProps = {
+  label: string;
+  value: string;
+};
+
 const IMAGE_W = 2048;
 const IMAGE_H = 1330;
 
@@ -546,6 +551,19 @@ const ZONES: Zone[] = [
   },
 ];
 
+function Info({ label, value }: InfoProps) {
+  return (
+    <div className="flex flex-col items-center">
+      <p className="font-black text-xl text-[#9b8457] text-shadow-lg/10">
+        {label}
+      </p>
+      <p className="font-medium text-lg text-black mt-3 text-center max-w-xs">
+        {value}
+      </p>
+    </div>
+  );
+}
+
 export default function InteractiveZooMap() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
@@ -629,7 +647,7 @@ export default function InteractiveZooMap() {
                   />
                 </div>
               )}
-              <p className="font-black text-2xl text-black fixed text-shadow-lg/10 mt-8 ml-130 mr-110 text-center">
+              <p className="font-black text-2xl text-black fixed text-shadow-lg/10 mt-8 ml-130 mr-110 text-center whitespace-nowrap">
                 {activeZone.id}
               </p>
               <div className="mt-8 ml-215 fixed">
@@ -640,26 +658,18 @@ export default function InteractiveZooMap() {
                   ✕
                 </button>
               </div>
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-105 text-center text-[#9b8457]">Famille</p>
-              <p className="font-medium text-lg fixed text-black mt-35 ml-100">{activeZone.famille}</p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-155 text-center text-[#9b8457]">Origine</p>
-              <p className="font-medium text-lg fixed text-black mt-35 ml-150">{activeZone.origine}</p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-205 text-center text-[#9b8457]">Habitat</p>
-              <p className="font-medium text-lg fixed text-black mt-35 ml-200">{activeZone.habitat}</p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-105 text-center text-[#9b8457]">Taille</p>
-              <p className="font-medium text-lg fixed text-black mt-65 ml-100">{activeZone.taille}</p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-155 text-center text-[#9b8457]">Poids</p>
-              <p className="font-medium text-lg fixed text-black mt-65 ml-150">{activeZone.poids}</p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-205 text-center text-[#9b8457]">Longévité</p>
-              <p className="font-medium text-lg fixed text-black mt-65 ml-205">{activeZone.longévité}</p>
-
+              <div className="flex justify-center w-full mt-20">
+                <div className="max-w-4xl grid grid-cols-3 gap-5 ml-80 mr-20 text-center">
+                  <Info label="Famille" value={activeZone.famille} />
+                  <Info label="Taille" value={activeZone.taille} />
+                  <Info label="Origine" value={activeZone.origine} />
+                  <Info label="Habitat" value={activeZone.habitat} />
+                  <Info label="Poids" value={activeZone.poids} />
+                  <Info label="Longévité" value={activeZone.longévité} />
+                </div>
+              </div>
               <p className="font-black text-xl fixed text-shadow-lg/10 mt-80 ml-80 text-center text-[#9b8457]">IUCN :</p>
-              <p className="font-medium text-lg fixed text-black mt-80 ml-80">{activeZone.IUCN}</p>
+              <p className="font-medium text-lg fixed text-black mt-80 ml-100">{activeZone.IUCN}</p>
             </div>
           </div>
         )}
