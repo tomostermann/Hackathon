@@ -2,6 +2,108 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+const viewportRef = useRef<HTMLDivElement | null>(null);
+
+const [isMobile, setIsMobile] = useState(false);
+const [scale, setScale] = useState(1);
+const [tx, setTx] = useState(0);
+const [ty, setTy] = useState(0);
+
+const pointers = useRef(new Map<number, { x: number; y: number }>());
+const lastPan = useRef<{ x: number; y: number } | null>(null);
+const lastPinch = useRef<{ dist: number; baseScale: number } | null>(null);
+
+const [isMobile, setIsMobile] = useState(false);
+
+const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+
+const toLocal = (clientX: number, clientY: number) => {
+  const el = viewportRef.current;
+  if (!el) return { x: clientX, y: clientY };
+  const r = el.getBoundingClientRect();
+  return { x: clientX - r.left, y: clientY - r.top };
+};
+
+const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+  (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+  const p = toLocal(e.clientX, e.clientY);
+  pointers.current.set(e.pointerId, p);
+
+  if (pointers.current.size === 1) {
+    lastPan.current = p;
+    lastPinch.current = null;
+  } else if (pointers.current.size === 2) {
+    const arr = Array.from(pointers.current.values());
+    const dx = arr[0].x - arr[1].x;
+    const dy = arr[0].y - arr[1].y;
+    lastPinch.current = { dist: Math.hypot(dx, dy), baseScale: scale };
+    lastPan.current = null;
+  }
+};
+
+const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+  if (!pointers.current.has(e.pointerId)) return;
+  const p = toLocal(e.clientX, e.clientY);
+  pointers.current.set(e.pointerId, p);
+
+  // pinch
+  if (pointers.current.size === 2 && lastPinch.current) {
+    const arr = Array.from(pointers.current.values());
+    const dx = arr[0].x - arr[1].x;
+    const dy = arr[0].y - arr[1].y;
+    const dist = Math.hypot(dx, dy);
+    const ratio = dist / (lastPinch.current.dist || dist);
+    setScale(clamp(lastPinch.current.baseScale * ratio, 0.9, 3.2));
+    return;
+  }
+
+  // pan
+  if (pointers.current.size === 1 && lastPan.current) {
+    const dx = p.x - lastPan.current.x;
+    const dy = p.y - lastPan.current.y;
+    lastPan.current = p;
+    setTx((v) => v + dx);
+    setTy((v) => v + dy);
+  }
+};
+
+const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+  pointers.current.delete(e.pointerId);
+  lastPan.current = null;
+  lastPinch.current = null;
+
+  if (pointers.current.size === 1) {
+    lastPan.current = Array.from(pointers.current.values())[0];
+  }
+};
+
+const onWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+  // desktop zoom
+  e.preventDefault();
+  const step = e.deltaY > 0 ? 0.92 : 1.08;
+  setScale((s) => clamp(s * step, 0.9, 3.2));
+};
+
+useEffect(() => {
+  setIsMobile(window.innerWidth < 768);
+}, []);
+
+useEffect(() => {
+  const mobile = window.innerWidth < 768;
+  setIsMobile(mobile);
+
+  // ✅ zoom initial mobile (tu peux changer 1.6)
+  if (mobile) {
+    setScale(1.6);
+    setTx(-180); // décalage initial (à ajuster)
+    setTy(-120); // décalage initial (à ajuster)
+  } else {
+    setScale(1);
+    setTx(0);
+    setTy(0);
+  }
+}, []);
 
 type Zone = {
   id: string;
@@ -14,6 +116,11 @@ type Zone = {
   longévité: string;
   IUCN: string;
   image: string;
+};
+
+type InfoProps = {
+  label: string;
+  value: string;
 };
 
 const IMAGE_W = 2048;
@@ -546,6 +653,19 @@ const ZONES: Zone[] = [
   },
 ];
 
+function Info({ label, value }: InfoProps) {
+  return (
+    <div className="flex flex-col items-center">
+      <p className="font-black text-xl text-[#9b8457] text-shadow-lg/10">
+        {label}
+      </p>
+      <p className="font-medium text-lg text-black mt-3 text-center max-w-xs">
+        {value}
+      </p>
+    </div>
+  );
+}
+
 export default function InteractiveZooMap() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
@@ -629,7 +749,7 @@ export default function InteractiveZooMap() {
                   />
                 </div>
               )}
-              <p className="font-black text-2xl text-black fixed text-shadow-lg/10 mt-8 ml-130 mr-110 text-center">
+              <p className="font-black text-2xl text-black fixed text-shadow-lg/10 mt-8 ml-130 mr-110 text-center whitespace-nowrap">
                 {activeZone.id}
               </p>
               <div className="mt-8 ml-215 fixed">
@@ -640,52 +760,20 @@ export default function InteractiveZooMap() {
                   ✕
                 </button>
               </div>
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-105 text-center text-[#9b8457]">
-                Famille
-              </p>
-              <p className="font-medium text-lg fixed text-black mt-35 ml-100">
-                {activeZone.famille}
-              </p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-155 text-center text-[#9b8457]">
-                Origine
-              </p>
-              <p className="font-medium text-lg fixed text-black mt-35 ml-150">
-                {activeZone.origine}
-              </p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-205 text-center text-[#9b8457]">
-                Habitat
-              </p>
-              <p className="font-medium text-lg fixed text-black mt-35 ml-200">
-                {activeZone.habitat}
-              </p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-105 text-center text-[#9b8457]">
-                Taille
-              </p>
-              <p className="font-medium text-lg fixed text-black mt-65 ml-100">
-                {activeZone.taille}
-              </p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-155 text-center text-[#9b8457]">
-                Poids
-              </p>
-              <p className="font-medium text-lg fixed text-black mt-65 ml-150">
-                {activeZone.poids}
-              </p>
-
-              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-205 text-center text-[#9b8457]">
-                Longévité
-              </p>
-              <p className="font-medium text-lg fixed text-black mt-65 ml-205">
-                {activeZone.longévité}
-              </p>
-
+              <div className="flex justify-center w-full mt-20">
+                <div className="max-w-4xl grid grid-cols-3 gap-5 ml-80 mr-20 text-center">
+                  <Info label="Famille" value={activeZone.famille} />
+                  <Info label="Taille" value={activeZone.taille} />
+                  <Info label="Origine" value={activeZone.origine} />
+                  <Info label="Habitat" value={activeZone.habitat} />
+                  <Info label="Poids" value={activeZone.poids} />
+                  <Info label="Longévité" value={activeZone.longévité} />
+                </div>
+              </div>
               <p className="font-black text-xl fixed text-shadow-lg/10 mt-80 ml-80 text-center text-[#9b8457]">
                 IUCN :
               </p>
-              <p className="font-medium text-lg fixed text-black mt-80 ml-80">
+              <p className="font-medium text-lg fixed text-black mt-80 ml-100">
                 {activeZone.IUCN}
               </p>
             </div>
