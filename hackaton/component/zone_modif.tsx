@@ -608,14 +608,14 @@ export default function InteractiveZooMap() {
         </div>
       </div>
 
-      {/* Sidebar */}
+      {/* Popup */}
       <aside className="h-full border-l bg-neutral-950 p-4 text-white">
         {!activeZone ? (
           <div></div>
         ) : (
           <div
             id="popup"
-            className="bg-[#f4f0de]/90 fixed text-[#9b8457] rounded-[200] top-130 left-125 bottom-50 right-50"
+            className="bg-[#f4f0de]/90 fixed rounded-[200] top-130 left-125 bottom-50 right-50"
           >
             <div className="flex items-start justify-between gap-2">
               {activeZone?.image && (
@@ -629,24 +629,65 @@ export default function InteractiveZooMap() {
                   />
                 </div>
               )}
-              <p className="font-black text-2xl text-shadow-lg/10 mt-8 ml-130 whitespace-nowrap">
+              <p className="font-black text-2xl text-black fixed text-shadow-lg/10 mt-8 ml-130 mr-110 text-center">
                 {activeZone.id}
               </p>
-              <button
-                className="px-2 py-1 rounded-lg border text-black mt-8 ml-40"
-                onClick={() => setActiveId(null)}
-              >
-                ✕
-              </button>
-              <div className="mt-auto space-y-1 text-black ">
-                <p className="font-medium text-lg">{activeZone.famille}</p>
-                <p className="font-medium text-lg">{activeZone.origine}</p>
-                <p className="font-medium text-lg">{activeZone.habitat}</p>
-                <p className="font-medium text-lg">{activeZone.taille}</p>
-                <p className="font-medium text-lg">{activeZone.poids}</p>
-                <p className="font-medium text-lg">{activeZone.longévité}</p>
-                <p className="font-medium text-lg">{activeZone.IUCN}</p>
+              <div className="mt-8 ml-215 fixed">
+                <button
+                  className="px-2 py-1 rounded-lg border text-black"
+                  onClick={() => setActiveId(null)}
+                >
+                  ✕
+                </button>
               </div>
+              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-105 text-center text-[#9b8457]">
+                Famille
+              </p>
+              <p className="font-medium text-lg fixed text-black mt-35 ml-100">
+                {activeZone.famille}
+              </p>
+
+              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-155 text-center text-[#9b8457]">
+                Origine
+              </p>
+              <p className="font-medium text-lg fixed text-black mt-35 ml-150">
+                {activeZone.origine}
+              </p>
+
+              <p className="font-black text-xl fixed text-shadow-lg/10 mt-25 ml-205 text-center text-[#9b8457]">
+                Habitat
+              </p>
+              <p className="font-medium text-lg fixed text-black mt-35 ml-200">
+                {activeZone.habitat}
+              </p>
+
+              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-105 text-center text-[#9b8457]">
+                Taille
+              </p>
+              <p className="font-medium text-lg fixed text-black mt-65 ml-100">
+                {activeZone.taille}
+              </p>
+
+              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-155 text-center text-[#9b8457]">
+                Poids
+              </p>
+              <p className="font-medium text-lg fixed text-black mt-65 ml-150">
+                {activeZone.poids}
+              </p>
+
+              <p className="font-black text-xl fixed text-shadow-lg/10 mt-55 ml-205 text-center text-[#9b8457]">
+                Longévité
+              </p>
+              <p className="font-medium text-lg fixed text-black mt-65 ml-205">
+                {activeZone.longévité}
+              </p>
+
+              <p className="font-black text-xl fixed text-shadow-lg/10 mt-80 ml-80 text-center text-[#9b8457]">
+                IUCN :
+              </p>
+              <p className="font-medium text-lg fixed text-black mt-80 ml-80">
+                {activeZone.IUCN}
+              </p>
             </div>
           </div>
         )}
